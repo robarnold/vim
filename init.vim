@@ -16,3 +16,23 @@ se encoding=utf-8
 se noswapfile
 se ff=unix
 se ffs=unix,dos
+
+let g:ctrlp_max_files = 0
+let g:ctrlp_lazy_update = 400
+let g:ctrlp_custom_ignore = {
+\  'dir': '\v[\/]offline-package-cache|node_modules|\.(git|hg)$',
+\  }
+
+let g:ale_lint_on_insert_leave = 1
+let g:ale_line_on_save = 0
+let g:ale_linters = {
+\  'css': ['prettier'],
+\  'javascript': ['eslint', 'flow', 'prettier'],
+\}
+let g:ale_fixers = {
+\  'javascript': ['eslint', 'prettier'],
+\}
+let g:ale_javascript_prettier_use_local_config = 1
+
+nmap ;f :ALEFix<CR>
+autocmd User ALELint unsilent echom 'Lint complete'

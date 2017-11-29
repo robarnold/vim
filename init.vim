@@ -16,6 +16,7 @@ se encoding=utf-8
 se noswapfile
 se ff=unix
 se ffs=unix,dos
+se shell=powershell
 " Undo some nvim defaults
 se noautoread
 autocmd BufEnter,FocusGained * checktime

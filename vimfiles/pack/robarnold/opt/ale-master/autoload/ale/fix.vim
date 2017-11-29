@@ -75,7 +75,7 @@ function! ale#fix#ApplyFixes(buffer, output) abort
 
         if l:data.lines_before != l:lines
             call remove(g:ale_fix_buffer_data, a:buffer)
-            echoerr 'The file was changed before fixing finished'
+            execute 'echoerr ''The file was changed before fixing finished'''
             return
         endif
     endif
@@ -332,18 +332,25 @@ function! s:RunFixer(options) abort
 endfunction
 
 function! s:GetCallbacks() abort
-    let l:fixers = ale#Var(bufnr(''), 'fixers')
-    let l:callback_list = []
+    if type(get(b:, 'ale_fixers')) is type([])
+        " Lists can be used for buffer-local variables only
+        let l:callback_list = b:ale_fixers
+    else
+        " buffer and global options can use dictionaries mapping filetypes to
+        " callbacks to run.
+        let l:fixers = ale#Var(bufnr(''), 'fixers')
+        let l:callback_list = []
 
-    for l:sub_type in split(&filetype, '\.')
-        let l:sub_type_callacks = get(l:fixers, l:sub_type, [])
+        for l:sub_type in split(&filetype, '\.')
+            let l:sub_type_callacks = get(l:fixers, l:sub_type, [])
 
-        if type(l:sub_type_callacks) == type('')
-            call add(l:callback_list, l:sub_type_callacks)
-        else
-            call extend(l:callback_list, l:sub_type_callacks)
-        endif
-    endfor
+            if type(l:sub_type_callacks) == type('')
+                call add(l:callback_list, l:sub_type_callacks)
+            else
+                call extend(l:callback_list, l:sub_type_callacks)
+            endif
+        endfor
+    endif
 
     if empty(l:callback_list)
         return []
@@ -399,17 +406,18 @@ function! ale#fix#Fix(...) abort
         let l:callback_list = s:GetCallbacks()
     catch /E700/
         let l:function_name = join(split(split(v:exception, ':')[3]))
-        echom printf(
+        let l:echo_message = printf(
         \   'There is no fixer named `%s`. Check :ALEFixSuggest',
         \   l:function_name,
         \)
+        execute 'echom l:echo_message'
 
         return 0
     endtry
 
     if empty(l:callback_list)
         if l:fixing_flag is# ''
-            echom 'No fixers have been defined. Try :ALEFixSuggest'
+            execute 'echom ''No fixers have been defined. Try :ALEFixSuggest'''
         endif
 
         return 0

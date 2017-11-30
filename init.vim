@@ -16,6 +16,9 @@ se encoding=utf-8
 se noswapfile
 se ff=unix
 se ffs=unix,dos
+" Undo some nvim defaults
+se noautoread
+autocmd BufEnter,FocusGained * checktime
 
 let g:ctrlp_max_files = 0
 let g:ctrlp_lazy_update = 400

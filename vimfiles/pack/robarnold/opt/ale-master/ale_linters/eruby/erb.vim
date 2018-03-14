@@ -5,13 +5,13 @@ function! ale_linters#eruby#erb#GetCommand(buffer) abort
     let l:rails_root = ale#ruby#FindRailsRoot(a:buffer)
 
     if empty(l:rails_root)
-        return 'erb -P -x %t | ruby -c'
+        return 'erb -P -T - -x %t | ruby -c'
     endif
 
     " Rails-flavored eRuby does not comply with the standard as understood by
     " ERB, so we'll have to do some substitution. This does not reduce the
     " effectiveness of the linter—the translated code is still evaluated.
-    return 'ruby -r erb -e ' . ale#Escape('puts ERB.new($stdin.read.gsub(%{<%=},%{<%}), nil, %{-}).src') . ' | ruby -c'
+    return 'ruby -r erb -e ' . ale#Escape('puts ERB.new($stdin.read.gsub(%{<%=},%{<%}), nil, %{-}).src') . '< %t | ruby -c'
 endfunction
 
 call ale#linter#Define('eruby', {

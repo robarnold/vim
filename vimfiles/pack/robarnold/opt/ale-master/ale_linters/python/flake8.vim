@@ -91,6 +91,12 @@ function! ale_linters#python#flake8#Handle(buffer, lines) abort
             continue
         endif
 
+        if l:code is# 'W391'
+        \&& !ale#Var(a:buffer, 'warn_about_trailing_blank_lines')
+            " Skip warnings for trailing blank lines if the option is off
+            continue
+        endif
+
         let l:item = {
         \   'lnum': l:match[1] + 0,
         \   'col': l:match[2] + 0,
@@ -99,11 +105,16 @@ function! ale_linters#python#flake8#Handle(buffer, lines) abort
         \   'type': 'W',
         \}
 
-        if l:code[:0] is# 'F' || l:code is# 'E999'
-            let l:item.type = 'E'
+        if l:code[:0] is# 'F'
+            if l:code isnot# 'F401'
+                let l:item.type = 'E'
+            endif
         elseif l:code[:0] is# 'E'
             let l:item.type = 'E'
-            let l:item.sub_type = 'style'
+
+            if l:code isnot# 'E999' && l:code isnot# 'E112'
+                let l:item.sub_type = 'style'
+            endif
         elseif l:code[:0] is# 'W'
             let l:item.sub_type = 'style'
         endif

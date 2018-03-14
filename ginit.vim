@@ -2,6 +2,5 @@
 " Guifont Source Code Pro:h12
 Guifont Consolas:h12
 packadd ale-master
-" Spams errors on startup
-"packadd vim-airline-master
+packadd vim-airline-master
 packadd ctrlp.vim-master

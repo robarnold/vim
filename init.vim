@@ -45,4 +45,3 @@ let g:ale_javascript_prettier_use_local_config = 1
 let g:ale_javascript_prettier_options = '--no-bracket-spacing --jsx-bracket-same-line --single-quote --trailing-comma=all'
 
 nmap ;f :ALEFix<CR>
-autocmd User ALELint unsilent echom 'Lint complete'

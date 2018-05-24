@@ -1,7 +1,7 @@
 $env:PATH = "$env:PATH;$PSScriptRoot/Neovim/bin"
 
 function installnvim() {
-  New-Item -Path "~/AppData/Local/nvim" -ItemType dir
+  New-Item -Path "~/AppData/Local/nvim" -ItemType dir -Force
   $initcontents = @"
 set runtimepath^=$PSScriptRoot\vimfiles
 let &packpath = &runtimepath

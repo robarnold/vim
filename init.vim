@@ -27,6 +27,7 @@ let g:ctrlp_lazy_update = 400
 let g:ctrlp_custom_ignore = {
 \  'dir': '\v[\/]offline-package-cache|node_modules|\.(git|hg)$',
 \  }
+let g:ctrlp_clear_cache_on_exit = 0
 
 let g:ale_lint_on_insert_leave = 1
 let g:ale_line_on_save = 0

@@ -4007,6 +4007,8 @@ E937	autocmd.txt	/*E937*
 E939	change.txt	/*E939*
 E94	windows.txt	/*E94*
 E940	eval.txt	/*E940*
+E941	eval.txt	/*E941*
+E942	eval.txt	/*E942*
 E943	message.txt	/*E943*
 E944	pattern.txt	/*E944*
 E945	pattern.txt	/*E945*
@@ -4197,6 +4199,7 @@ TOhtml-uncopyable-text	syntax.txt	/*TOhtml-uncopyable-text*
 TOhtml-wrap-text	syntax.txt	/*TOhtml-wrap-text*
 TRUE	eval.txt	/*TRUE*
 TSQL	ft_sql.txt	/*TSQL*
+TUI	term.txt	/*TUI*
 Tab	intro.txt	/*Tab*
 TabClosed	autocmd.txt	/*TabClosed*
 TabEnter	autocmd.txt	/*TabEnter*
@@ -5939,7 +5942,6 @@ highlight-guifg	syntax.txt	/*highlight-guifg*
 highlight-guisp	syntax.txt	/*highlight-guisp*
 highlight-start	syntax.txt	/*highlight-start*
 highlight-stop	syntax.txt	/*highlight-stop*
-highlight-term	syntax.txt	/*highlight-term*
 highlightID()	deprecated.txt	/*highlightID()*
 highlight_exists()	deprecated.txt	/*highlight_exists()*
 highlighting-functions	usr_41.txt	/*highlighting-functions*
@@ -7265,6 +7267,7 @@ remote_peek()	eval.txt	/*remote_peek()*
 remote_plugin.txt	remote_plugin.txt	/*remote_plugin.txt*
 remote_read()	eval.txt	/*remote_read()*
 remote_send()	eval.txt	/*remote_send()*
+remote_startserver()	eval.txt	/*remote_startserver()*
 remove()	eval.txt	/*remove()*
 remove-filetype	filetype.txt	/*remove-filetype*
 remove-option-flags	options.txt	/*remove-option-flags*

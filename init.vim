@@ -30,13 +30,14 @@ let g:ctrlp_custom_ignore = {
 let g:ctrlp_clear_cache_on_exit = 0
 
 let g:ale_lint_on_insert_leave = 1
-let g:ale_line_on_save = 0
+let g:ale_line_on_save = 1
+let g:ale_completion_enabled = 1
 let g:ale_linters = {
 \  'css': ['prettier'],
 \  'less': ['prettier'],
 \  'json': ['prettier'],
 \  'markdown': ['prettier'],
-\  'javascript': ['eslint', 'flow', 'prettier'],
+\  'javascript': ['eslint', 'flow-language-server', 'prettier'],
 \  'rust': ['cargo', 'rustfmt'],
 \}
 let g:ale_fixers = {
@@ -50,3 +51,4 @@ let g:ale_javascript_prettier_options = '--no-bracket-spacing --jsx-bracket-same
 packadd rust.vim-master
 
 nmap ;f :ALEFix<CR>
+nmap ;d :ALEGoToDefinition<CR>

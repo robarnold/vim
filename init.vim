@@ -48,6 +48,7 @@ let g:ale_fixers = {
 let g:ale_javascript_prettier_use_local_config = 1
 let g:ale_javascript_prettier_options = '--no-bracket-spacing --jsx-bracket-same-line --single-quote --trailing-comma=all'
 let g:ale_rust_rls_toolchain = 'stable'
+let g:ale_rust_cargo_use_clippy = 1
 
 packadd rust.vim-master
 

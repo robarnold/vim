@@ -7210,6 +7210,7 @@ python-tabpage	if_pyth.txt	/*python-tabpage*
 python-tabpages	if_pyth.txt	/*python-tabpages*
 python-vars	if_pyth.txt	/*python-vars*
 python-vim	if_pyth.txt	/*python-vim*
+python-virtualenv	provider.txt	/*python-virtualenv*
 python-vvars	if_pyth.txt	/*python-vvars*
 python-window	if_pyth.txt	/*python-window*
 python-windows	if_pyth.txt	/*python-windows*
